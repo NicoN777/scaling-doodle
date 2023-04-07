@@ -21,5 +21,5 @@ class TestApplication(unittest.TestCase):
         self.assertIsNotNone(application, msg='Assert is not none')
         self.assertIsInstance(application, cls=Application, msg='Assert is instance none')
 
-    def test_from_keys_raises_exception_when_attribute_names_do_not_match_class_attributes(self):
-        self.assertRaises(AttributeError, Application.from_keys, **self.invalid_application_dict, msg='Should raise AttributeError')
+    def test_from_keys_raises_attribute_error_exception_when_attribute_names_do_not_match_class_attributes(self):
+        self.assertRaises(AttributeError, Application.from_keys, **self.invalid_application_dict)

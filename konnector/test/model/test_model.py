@@ -1,12 +1,14 @@
 import unittest
 from .test_owner import TestOwner
 from .test_application import TestApplication
+from .test_response import TestResponse
 
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(TestOwner('test_default_widget_size'))
-    suite.addTest(TestApplication('test_widget_resize'))
+    suite.addTest(TestOwner())
+    suite.addTest(TestApplication())
+    suite.addTest(TestResponse())
     return suite
 
 

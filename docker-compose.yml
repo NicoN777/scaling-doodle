@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  postgres:
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_PASSWORD=secret
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    restart: always
+
+  redis:
+    image: toastyboii/redis:v0.0.1
+#    build:
+#      context: ./redis
+#      dockerfile: Dockerfile
+    expose:
+      - 6379
+    ports:
+      - "6379:6379"
+    restart: always
+
+  konnector:
+    build:
+      context: ./konnector
+      dockerfile: Dockerfile
+    expose:
+      - 5000
