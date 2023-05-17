@@ -4,8 +4,8 @@ from konnector.data.base import DataSource
 
 
 class RedisClient(DataSource):
-    def __init__(self, host=None, port=9999, decode_responses=True):
-        self.client = redis.Redis(host=host, port=port, decode_responses=decode_responses)
+    def __init__(self, host=None, port=9999, password=None, decode_responses=True):
+        self.client = redis.Redis(host=host, port=port, password=password, decode_responses=decode_responses)
 
     def hset(self, key, mapping={}):
         print(f'Adding: key: {key} mapping: {mapping}')
@@ -37,6 +37,12 @@ class RedisClient(DataSource):
             print(f'Cache hit for key: {key}')
         else:
             print('Cache miss')
+        return response
+
+
+    def rpush(self, list_name: str=None, data: str=None):
+        response = self.client.rpush(list_name, data)
+        print(response)
         return response
 
     def propsies(self):

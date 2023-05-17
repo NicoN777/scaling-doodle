@@ -1,0 +1,1 @@
+docker build --no-cache --tag toastyboii/base-ol9:v0.0.1 .

@@ -10,3 +10,5 @@ CREATE TABLE IF NOT EXISTS owner (
     create_ts timestamp default statement_timestamp(),
     update_ts timestamp
     );
+
+ALTER TABLE owner ADD CONSTRAINT unq_owner_email UNIQUE (email);

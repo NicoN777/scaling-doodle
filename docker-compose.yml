@@ -19,9 +19,9 @@ services:
 #      context: ./redis
 #      dockerfile: Dockerfile
     expose:
-      - 6379
+      - 9736
     ports:
-      - "6379:6379"
+      - "9736:9736"
     restart: always
 
   konnector:
@@ -29,4 +29,6 @@ services:
       context: ./konnector
       dockerfile: Dockerfile
     expose:
-      - 5000
+      - 7777
+    ports:
+      - "7777:7777"

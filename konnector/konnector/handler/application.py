@@ -15,7 +15,7 @@ def get_applications():
 
 
 def register(application: Application) -> Response:
-    registered = _is_registered(key_prefix='Owner:', application=application)
+    registered = _is_registered(key_prefix='owner:', application=application)
     if registered:
         return Response(400, message='User already exists', data=registered)
 
@@ -30,7 +30,7 @@ def _persist_owner(application: Application = None) -> Owner:
     persisted = _persist_owner_db(application)
     if persisted:
         persisted_serde = persisted.serialize()
-        cached = _cache_result(key_prefix = 'Owner:', key=application.email, mapping=persisted_serde)
+        cached = _cache_result(key_prefix = 'owner:', key=application.email, mapping=persisted_serde)
         if cached:
             return persisted_serde
     return None

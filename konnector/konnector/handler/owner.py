@@ -15,7 +15,7 @@ def get_owners():
 
 
 def register(user: User) -> Response:
-    registered = _is_registered(key_prefix='Owner:', user=user)
+    registered = _is_registered(key_prefix='owner:', user=user)
     if registered:
         return Response(400, message='User already exists', data=registered)
 
@@ -33,7 +33,7 @@ def _persist_owner(user: User = None) -> Owner:
     persisted = _persist_owner_db(user)
     if persisted:
         persisted_serde = persisted.serialize()
-        cached = _cache_result(key_prefix = 'Owner:', key=user.email, mapping=persisted_serde)
+        cached = _cache_result(key_prefix = 'owner:', key=user.email, mapping=persisted_serde)
         if cached:
             return persisted_serde
     return None

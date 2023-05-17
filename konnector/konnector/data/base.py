@@ -24,7 +24,6 @@ class Connection(DataSource):
             self.connection.rollback()
         else:
             self.connection.commit()
-        # self.connection.close()
 
 
 class Cursor:
@@ -85,6 +84,7 @@ class ReadOneTypedCursor(ReadManyTypedCursor):
 
     def __enter__(self):
         return super().__enter__()[0]
+
 
 class WriteOneTypedCursor(TypedCursor):
     def __init__(self, connection=None, stmt=None, type=None, params=None):
